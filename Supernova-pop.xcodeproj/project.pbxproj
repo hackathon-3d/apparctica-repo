@@ -164,6 +164,9 @@
 		ECD0B0FE17C8ED6500897C7B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0FC17C8ED6500897C7B /* Icon-72.png */; };
 		ECD0B0FF17C8ED6500897C7B /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */; };
 		ECD0B10217C8F11900897C7B /* PauseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD0B10117C8F11900897C7B /* PauseScene.m */; };
+		ECD0B10517C8F40300897C7B /* HowToScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD0B10417C8F40300897C7B /* HowToScene.m */; };
+		ECD0B10717C8F6C300897C7B /* cooltext1162281600bb.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */; };
+		ECD0B10917C8F90F00897C7B /* poptext.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10817C8F90F00897C7B /* poptext.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -474,6 +477,10 @@
 		ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		ECD0B10017C8F11900897C7B /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
 		ECD0B10117C8F11900897C7B /* PauseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseScene.m; sourceTree = "<group>"; };
+		ECD0B10317C8F40300897C7B /* HowToScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToScene.h; sourceTree = "<group>"; };
+		ECD0B10417C8F40300897C7B /* HowToScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScene.m; sourceTree = "<group>"; };
+		ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cooltext1162281600bb.png; sourceTree = "<group>"; };
+		ECD0B10817C8F90F00897C7B /* poptext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poptext.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +610,8 @@
 				EC79213717C870110032D2A4 /* StartMenu.m */,
 				ECD0B10017C8F11900897C7B /* PauseScene.h */,
 				ECD0B10117C8F11900897C7B /* PauseScene.m */,
+				ECD0B10317C8F40300897C7B /* HowToScene.h */,
+				ECD0B10417C8F40300897C7B /* HowToScene.m */,
 				EC791F8417C841560032D2A4 /* Resources */,
 				EC791F9C17C841560032D2A4 /* libs */,
 				EC79211017C841580032D2A4 /* Supporting Files */,
@@ -613,6 +622,8 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */,
+				ECD0B10817C8F90F00897C7B /* poptext.png */,
 				ECD0B0FC17C8ED6500897C7B /* Icon-72.png */,
 				ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */,
 				ECD0B0F817C8EC2300897C7B /* pause.png */,
@@ -1077,6 +1088,8 @@
 				ECD0B0FB17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png in Resources */,
 				ECD0B0FE17C8ED6500897C7B /* Icon-72.png in Resources */,
 				ECD0B0FF17C8ED6500897C7B /* Icon-72@2x.png in Resources */,
+				ECD0B10717C8F6C300897C7B /* cooltext1162281600bb.png in Resources */,
+				ECD0B10917C8F90F00897C7B /* poptext.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,6 +1215,7 @@
 				76E228DC17C8524000CDC0E2 /* CircleClass.m in Sources */,
 				EC79213817C870110032D2A4 /* StartMenu.m in Sources */,
 				ECD0B10217C8F11900897C7B /* PauseScene.m in Sources */,
+				ECD0B10517C8F40300897C7B /* HowToScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

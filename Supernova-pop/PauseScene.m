@@ -33,10 +33,10 @@
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:60];
         
-        CCMenuItem *Resume= [CCMenuItemFont itemFromString:@"Resume"
+        CCMenuItem *Resume= [CCMenuItemFont itemWithString:@"Resume"
                                                     target:self
                                                   selector:@selector(resume:)];
-        CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Quit Game"
+        CCMenuItem *Quit = [CCMenuItemFont itemWithString:@"Quit Game"
                                                    target:self selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: Resume, Quit, nil];
