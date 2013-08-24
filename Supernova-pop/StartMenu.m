@@ -38,6 +38,27 @@
                                                                  selector:@selector(doSomething:)];
         [myMenu addChild:menuItem1];
         [self addChild:myMenu];
+        
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        // Add stars
+        NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
+        for(NSString *stars in starsArray) {
+            CCParticleSystemQuad *starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+            starsEffect.position = ccp(winSize.width, winSize.height);
+            starsEffect.posVar = ccp(starsEffect.posVar.x, winSize.height);
+            starsEffect.startSize *= 0.5;
+            starsEffect.endSize *= 1;
+            starsEffect.speed *= 0.5;
+            [self addChild:starsEffect z:1];
+        }
+        
+        CCParticleSystemQuad *supasupa = [CCParticleSystemQuad particleWithFile:@"supasupa.plist"];
+        supasupa.position = ccp(winSize.width, winSize.height);
+        supasupa.posVar = ccp(supasupa.posVar.x, winSize.height);
+        supasupa.startSize *= 0.5;
+        supasupa.endSize *= 1;
+        supasupa.speed *= 0.5;
+        [self addChild:supasupa z:1];
 	}
 	
 	return self;
