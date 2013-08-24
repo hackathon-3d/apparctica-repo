@@ -32,7 +32,7 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 175 + [self randomFloatBetween:50 and:150];
+        self->_correct_band = 100 + [self randomFloatBetween:50 and:150];
         self->_is_visible = true;
         self->_is_locked = false;
         self->_rate_of_growth = [self randomFloatBetween:0.4 and:2.5];
@@ -56,11 +56,13 @@
 
 -(void) draw
 {
+
+    // red
     ccDrawColor4F(255, 0, 0, 255);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
-    
-    ccDrawColor4F(255, 255, 255, 255);
-        
+
+    glLineWidth(20);
+    ccDrawColor4F(108, 248, 252, 0);
     ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, CC_DEGREES_TO_RADIANS(360), 60, NO);
     
 }
@@ -97,7 +99,7 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band + 10 || self->_size_of_circle >= self->_correct_band - 10) {
+        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 10) {
             // the circle is by the band
             self->_is_visible = false;
         }
