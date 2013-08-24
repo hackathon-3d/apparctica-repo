@@ -38,6 +38,14 @@
         
         [self addChild: instructions];
         
+        CCLabelTTF *website = [CCLabelTTF labelWithString:@"apparctica.com "
+                                                      fontName:@"Courier New"
+                                                      fontSize:26];
+        website.position = ccp(winSize.width-100, 20);
+        
+        [self addChild: website];
+
+        
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:70];
         
