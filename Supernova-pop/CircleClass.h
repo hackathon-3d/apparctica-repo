@@ -30,6 +30,7 @@
 @property float _rate_growth;
 @property bool _is_visible;
 @property bool _is_locked;
+@property bool is_fading;
 @property NSDate *circleSpawnDate;
 @property int lastTimeScheduledBefore;
 

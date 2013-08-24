@@ -11,6 +11,7 @@
 #import "HelloWorldLayer.h"
 #import "CircleClass.h"
 #import "PauseScene.h"
+#import "CCActionInterval.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -170,7 +171,10 @@
         for (CircleClass *a_circle in _circles) {
             if (a_circle.isVisible == false) {
                 [self addPoint];
-                [self removeChild:a_circle];
+                
+                a_circle.is_fading = true;
+                [sunFire removeFromParentAndCleanup:YES];
+                 
                 [_circles removeObject:a_circle];
             }
             
@@ -178,6 +182,10 @@
                 [_circles removeObject:a_circle];
                 numLocked++;
                 [lifeLabel setString:[NSString stringWithFormat:@"Lives: %d", 3 - numLocked]];
+            }
+            
+            if (a_circle.is_fading == true && a_circle._size_of_circle < 1) {
+                [self removeChild:a_circle];
             }
         }
         

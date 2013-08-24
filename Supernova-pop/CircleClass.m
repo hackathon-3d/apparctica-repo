@@ -15,7 +15,7 @@
 @synthesize _size_of_circle;
 @synthesize _correct_band;
 @synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location, lastTimeScheduledBefore, circleSpawnDate;
-@synthesize nextXLocation, nextYLocation;
+@synthesize nextXLocation, nextYLocation, is_fading;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -81,7 +81,7 @@
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
     ccDrawColor4F(0, 0, 0, 255);
-    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 20, 60);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 25, 60);
     
     // steel blue
     ccDrawColor4F(0, 0, 128, 255);
@@ -106,6 +106,10 @@
         sunFire.endRadius = self->_size_of_circle;
     }
     
+    if (is_fading == true) {
+        self->_size_of_circle = self->_size_of_circle - self->_rate_of_growth;
+    }
+    
 }
 
 -(void) registerWithTouchDispatcher
@@ -126,7 +130,7 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band + 10 && self->_size_of_circle >= self->_correct_band - 40) {
+        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 25) {
             // the circle is by the band
             self->_is_visible = false;
             
