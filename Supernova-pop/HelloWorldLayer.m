@@ -19,6 +19,8 @@
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 
+@synthesize numLocked;
+
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
@@ -45,6 +47,7 @@
         _circles = [[CCArray alloc] init];
         _num_circles_at_a_time = 1;
         _next_count_to_add_circles = 10;
+        numLocked = 0;
 	}
 	return self;
 }
@@ -79,7 +82,12 @@
         
         if (a_circle.isLocked == true) {
             [_circles removeObject:a_circle];
+            numLocked++;
         }
+    }
+    
+    if (numLocked == 3) {
+        [self endScene];
     }
     
     int intervalOfTen = (int)ceil(gameTime) % 10;
@@ -92,12 +100,54 @@
     // create a circle
     if ([_circles count] == 0) {        
         for (int i = 0; i < _num_circles_at_a_time; i++) {
-            CCLayer *layer = [CircleClass node];
+            CircleClass *new_class = [CircleClass node];
+            CCLayer *layer = new_class;
+            CGSize size = [[CCDirector sharedDirector] winSize];
+            
+            while (true) {
+                bool breakOut = true;
+                for (CircleClass *circle in _circles) {
+                    float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
+                    
+                    distance = sqrt(distance);
+                    
+                    if (distance <= [circle _size_of_circle]) {
+                        // in a circle
+                        breakOut = false;
+                        
+                        new_class._x_location = arc4random_uniform(size.width - 20);
+                        new_class._y_location = arc4random_uniform(size.height - 20);
+                    }
+                }
+                
+                if (breakOut == true) {
+                    break;
+                }
+            }
+            
             [self addChild:layer];
             [_circles addObject:layer];
         }
     }
     
+    
+}
+
+- (void)endScene {
+    
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    
+    NSString *message = @"You lose!";
+
+    CCLabelBMFont *label;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        label = [CCLabelBMFont labelWithString:message fntFile:@"Arial-hd.fnt"];
+    } else {
+        label = [CCLabelBMFont labelWithString:message fntFile:@"Arial.fnt"];
+    }
+    label.scale = 0.1;
+    label.position = ccp(winSize.width/2, winSize.height * 0.6);
+    [self addChild:label];
     
 }
 

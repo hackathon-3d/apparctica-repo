@@ -23,6 +23,14 @@
 -(bool) isVisible;
 -(bool) isLocked;
 
+@property float _size_of_circle;
+@property float _x_location;
+@property float _y_location;
+@property float _correct_band;
+@property float _rate_growth;
+@property bool _is_visible;
+@property bool _is_locked;
+
 +(CCScene *) scene;
 
 @end

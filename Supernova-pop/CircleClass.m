@@ -10,6 +10,12 @@
 #import "CCTouchDispatcher.h"
 
 @implementation CircleClass
+
+@synthesize _size_of_circle;
+@synthesize _correct_band;
+@synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location;
+
+
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
@@ -64,7 +70,6 @@
 
 -(void) draw
 {
-
     // red
     ccDrawColor4F(255, 0, 0, 0);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
@@ -119,7 +124,7 @@
             self->_is_visible = false;
         }
         else {
-            // to early... not within the band
+            // too early... not within the band
             self->_is_locked = true;
         }
         
@@ -130,7 +135,6 @@
 - (void)setInvisible:(CCNode *)node {
     node.visible = NO;
 }
-
 
 - (bool)isVisible {
     return self->_is_visible;
