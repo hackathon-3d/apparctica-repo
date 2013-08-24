@@ -41,10 +41,10 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 25 + [self randomFloatBetween:50 and:200];
+        self->_correct_band = 75 + [self randomFloatBetween:50 and:200];
         self->_is_visible = true;
         self->_is_locked = false;
-        self->_rate_of_growth = [self randomFloatBetween:1.8 and:3];
+        self->_rate_of_growth = [self randomFloatBetween:1.2 and:3];
         
         circleSpawnDate = [NSDate date];
         lastTimeScheduledBefore = 0;//new var
@@ -85,7 +85,7 @@
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
     ccDrawColor4F(0, 0, 0, 255);
-    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 25, 60);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 30, 60);
     
     // steel blue
     ccDrawColor4F(0, 0, 128, 128);
@@ -130,7 +130,7 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 25) {
+        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 30) {
             // the circle is by the band
             self->_is_visible = false;
             
