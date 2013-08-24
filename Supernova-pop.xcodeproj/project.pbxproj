@@ -159,6 +159,11 @@
 		EC79213C17C883230032D2A4 /* supasupa.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213B17C883230032D2A4 /* supasupa.plist */; };
 		EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213D17C8881B0032D2A4 /* sun_fire.plist */; };
 		EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213F17C889BE0032D2A4 /* power_suck.plist */; };
+		ECD0B0F917C8EC2300897C7B /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0F817C8EC2300897C7B /* pause.png */; };
+		ECD0B0FB17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0FA17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png */; };
+		ECD0B0FE17C8ED6500897C7B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0FC17C8ED6500897C7B /* Icon-72.png */; };
+		ECD0B0FF17C8ED6500897C7B /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */; };
+		ECD0B10217C8F11900897C7B /* PauseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD0B10117C8F11900897C7B /* PauseScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -463,6 +468,12 @@
 		EC79213B17C883230032D2A4 /* supasupa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = supasupa.plist; sourceTree = "<group>"; };
 		EC79213D17C8881B0032D2A4 /* sun_fire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sun_fire.plist; sourceTree = "<group>"; };
 		EC79213F17C889BE0032D2A4 /* power_suck.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = power_suck.plist; sourceTree = "<group>"; };
+		ECD0B0F817C8EC2300897C7B /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		ECD0B0FA17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		ECD0B0FC17C8ED6500897C7B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		ECD0B10017C8F11900897C7B /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
+		ECD0B10117C8F11900897C7B /* PauseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -590,6 +601,8 @@
 				EC79211B17C841580032D2A4 /* IntroLayer.m */,
 				EC79213617C870110032D2A4 /* StartMenu.h */,
 				EC79213717C870110032D2A4 /* StartMenu.m */,
+				ECD0B10017C8F11900897C7B /* PauseScene.h */,
+				ECD0B10117C8F11900897C7B /* PauseScene.m */,
 				EC791F8417C841560032D2A4 /* Resources */,
 				EC791F9C17C841560032D2A4 /* libs */,
 				EC79211017C841580032D2A4 /* Supporting Files */,
@@ -600,10 +613,14 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0B0FC17C8ED6500897C7B /* Icon-72.png */,
+				ECD0B0FD17C8ED6500897C7B /* Icon-72@2x.png */,
+				ECD0B0F817C8EC2300897C7B /* pause.png */,
 				76FCF80217C8B01A00F44CB1 /* restart_button.png */,
 				EC79213917C8728C0032D2A4 /* start_button.png */,
 				EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */,
 				EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */,
+				ECD0B0FA17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png */,
 				76E228DD17C85CF100CDC0E2 /* Backgrounds */,
 				76E228E317C85CF100CDC0E2 /* Fonts */,
 				76E228E617C85CF100CDC0E2 /* Particles */,
@@ -1056,6 +1073,10 @@
 				EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */,
 				EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */,
 				76FCF80317C8B01A00F44CB1 /* restart_button.png in Resources */,
+				ECD0B0F917C8EC2300897C7B /* pause.png in Resources */,
+				ECD0B0FB17C8EC7D00897C7B /* Default-Landscape@2x~ipad.png in Resources */,
+				ECD0B0FE17C8ED6500897C7B /* Icon-72.png in Resources */,
+				ECD0B0FF17C8ED6500897C7B /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,6 +1201,7 @@
 				EC79211C17C841580032D2A4 /* IntroLayer.m in Sources */,
 				76E228DC17C8524000CDC0E2 /* CircleClass.m in Sources */,
 				EC79213817C870110032D2A4 /* StartMenu.m in Sources */,
+				ECD0B10217C8F11900897C7B /* PauseScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
