@@ -15,7 +15,7 @@
 @synthesize _size_of_circle;
 @synthesize _correct_band;
 @synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location, lastTimeScheduledBefore, circleSpawnDate;
-@synthesize nextXLocation, nextYLocation;
+@synthesize nextXLocation, nextYLocation, is_fading, sunFire, opacity, fadeOutRate, currentOpacity;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -53,6 +53,10 @@
         sunFire = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
         sunFire.position = ccp(self->_x_location, self->_y_location);
         sunFire.endRadius = 0;
+        
+        fadeOutRate = 25;
+        currentOpacity = 255;
+        
         // sunFire.posVar = ccp(supasupa.posVar.x, winSize.height);
         //    supasupa.startSize *= 0.5;
         //    supasupa.endSize *= 1;
@@ -81,7 +85,7 @@
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
     ccDrawColor4F(0, 0, 0, 255);
-    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 20, 60);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 25, 60);
     
     // steel blue
     ccDrawColor4F(0, 0, 128, 255);
@@ -126,7 +130,7 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band + 10 && self->_size_of_circle >= self->_correct_band - 40) {
+        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 25) {
             // the circle is by the band
             self->_is_visible = false;
             

@@ -18,6 +18,7 @@
     CGFloat gameTime;
     int score;
     CCLabelTTF *scoreLabel;
+    CCLabelTTF *lifeLabel;
     CCArray *_circles;
     int _num_circles_at_a_time;
     int _next_count_to_add_circles;

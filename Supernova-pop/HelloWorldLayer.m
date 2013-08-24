@@ -11,6 +11,7 @@
 #import "HelloWorldLayer.h"
 #import "CircleClass.h"
 #import "PauseScene.h"
+#import "CCActionInterval.h"
 
 
 // Needed to obtain the Navigation Controller
@@ -68,10 +69,10 @@
         [highscoreLabel setFontSize:32.0];
         [self addChild:highscoreLabel z:1000];
         
-//        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
-//        lifeLabel.position = ccp(winSize.width-120, winSize.height-60); //Middle of the screen...
-//        [lifeLabel setFontSize:64.0];
-//        [self addChild:lifeLabel z:1];
+        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
+        lifeLabel.position = ccp(winSize.width-120, winSize.height-90); //Middle of the screen...
+        [lifeLabel setFontSize:64.0];
+        [self addChild:lifeLabel z:1];
         
         _next_count_to_add_circles = 3;
         numLocked = 0;
@@ -178,14 +179,19 @@
         for (CircleClass *a_circle in _circles) {
             if (a_circle.isVisible == false) {
                 [self addPoint];
-                [self removeChild:a_circle];
+                
+                // TODO add a particle for smoke out!
+                
+                 [self removeChild:a_circle];
                 [_circles removeObject:a_circle];
             }
             
             if (a_circle.isLocked == true) {
                 [_circles removeObject:a_circle];
                 numLocked++;
+                [lifeLabel setString:[NSString stringWithFormat:@"Lives: %d", 3 - numLocked]];
             }
+            
         }
         
         if (numLocked == 3) {
