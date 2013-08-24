@@ -59,7 +59,14 @@
         scoreLabel = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Marker Felt" fontSize:34];
         scoreLabel.position = ccp(winSize.width-120, winSize.height-30); //Middle of the screen...
         [scoreLabel setFontSize:64.0];
-        [self addChild:scoreLabel z:1];
+        [self addChild:scoreLabel z:1000];
+        
+        
+        //Create and add the highscore label as a child.
+        CCLabelTTF *highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %d",[[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ]] fontName:@"Marker Felt" fontSize:34];
+        highscoreLabel.position = ccp(winSize.width-110, winSize.height-95); //Middle of the screen...
+        [highscoreLabel setFontSize:32.0];
+        [self addChild:highscoreLabel z:1000];
         
 //        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
 //        lifeLabel.position = ccp(winSize.width-120, winSize.height-60); //Middle of the screen...
@@ -221,6 +228,15 @@
     supasupa.endSize *= 0.8;
     supasupa.speed *= 0.5;
     [self addChild:supasupa z:1];
+    
+    // Get your highscore from the prefs.
+    if( [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ] < score){
+        
+        // Snippet used to save your highscore in the prefs.
+        int highScore  = score;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:highScore] forKey:@"HighScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
 }
 

@@ -110,6 +110,16 @@
             [popSprite runAction: [CCSequence actions:action1, action2, nil]];
         }
         
+        
+        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %d",[[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ]]
+                                               fontName:@"Courier New"
+                                               fontSize:90];
+        label.position = ccp(winSize.width/2, winSize.height/8);
+        
+        [self addChild: label];
+        
+        // Get your highscore from the prefs.
+        //highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
 	}
 	
 	return self;
