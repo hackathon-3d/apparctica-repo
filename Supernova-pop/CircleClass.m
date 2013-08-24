@@ -32,7 +32,7 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 100 + [self randomFloatBetween:50 and:150];
+        self->_correct_band = 25 + [self randomFloatBetween:50 and:250];
         self->_is_visible = true;
         self->_is_locked = false;
         self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
@@ -118,8 +118,13 @@
             // the circle is by the band
             self->_is_visible = false;
         }
+        else {
+            // to early... not within the band
+            self->_is_locked = true;
+        }
         
     }
+    
 }
 
 - (void)setInvisible:(CCNode *)node {
