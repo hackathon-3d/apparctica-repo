@@ -60,10 +60,10 @@
         [scoreLabel setFontSize:64.0];
         [self addChild:scoreLabel z:1];
         
-//        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
-//        lifeLabel.position = ccp(winSize.width-120, winSize.height-60); //Middle of the screen...
-//        [lifeLabel setFontSize:64.0];
-//        [self addChild:lifeLabel z:1];
+        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
+        lifeLabel.position = ccp(winSize.width-120, winSize.height-90); //Middle of the screen...
+        [lifeLabel setFontSize:64.0];
+        [self addChild:lifeLabel z:1];
         
         _next_count_to_add_circles = 3;
         numLocked = 0;
@@ -168,6 +168,7 @@
             if (a_circle.isLocked == true) {
                 [_circles removeObject:a_circle];
                 numLocked++;
+                [lifeLabel setString:[NSString stringWithFormat:@"Lives: %d", 3 - numLocked]];
             }
         }
         
