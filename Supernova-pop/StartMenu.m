@@ -8,6 +8,7 @@
 
 #import "StartMenu.h"
 #import "HelloWorldLayer.h"
+#import "HowToScene.h"
 
 @implementation StartMenu
 
@@ -47,7 +48,7 @@
         [CCMenuItemFont setFontSize:40];
 
         CCMenuItem *Quit = [CCMenuItemFont itemWithString:@"How To Play"
-                                                   target:self selector:@selector(doSomething:)];
+                                                   target:self selector:@selector(showHowToScene:)];
         
         CCMenu *menu= [CCMenu menuWithItems: Resume, Quit, nil];
         menu.position = ccp(winSize.width/2, winSize.height/2);
@@ -117,6 +118,11 @@
 -(void)doSomething: (CCMenuItem  *) menuItem
 {
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.3 scene:[HelloWorldLayer scene] ]];
+}
+
+-(void)showHowToScene: (CCMenuItem  *) menuItem
+{
+    [[CCDirector sharedDirector] pushScene:[HowToScene node]];
 }
 
 @end
