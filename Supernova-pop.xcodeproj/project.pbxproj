@@ -579,6 +579,8 @@
 		EC7923B117C894060032D2A4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		EC7923B717C894AD0032D2A4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		ECD0B0E717C8964C00897C7B /* start_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_button.png; sourceTree = "<group>"; };
+		ECD0B0EA17C8997700897C7B /* Sprites.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Sprites.plist; sourceTree = "<group>"; };
+		ECD0B0EB17C8997700897C7B /* Sprites.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sprites.pvr.ccz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,6 +663,7 @@
 		EC79216417C891E40032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0B0E917C8996200897C7B /* Sprite Sheets */,
 				ECD0B0E717C8964C00897C7B /* start_button.png */,
 				EC7923B717C894AD0032D2A4 /* Default-Landscape@2x~ipad.png */,
 				EC7923B117C894060032D2A4 /* Default-Landscape~ipad.png */,
@@ -1203,6 +1206,15 @@
 				EC7923A517C893A00032D2A4 /* Stars3.plist */,
 			);
 			name = Particles;
+			sourceTree = "<group>";
+		};
+		ECD0B0E917C8996200897C7B /* Sprite Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				ECD0B0EA17C8997700897C7B /* Sprites.plist */,
+				ECD0B0EB17C8997700897C7B /* Sprites.pvr.ccz */,
+			);
+			name = "Sprite Sheets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
