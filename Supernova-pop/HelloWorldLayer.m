@@ -161,7 +161,7 @@
     //NSLog([[NSString alloc] initWithFormat:@"Count: %i", [_total_circles_ever count]]);
     if (numLocked < 3) {
         if ([_total_circles_ever count] > _next_count_to_add_circles && [_total_circles_ever count] % 5 == 0) {
-            [self unschedule:@selector(addCircles)];
+            [self unschedule:@selector(addCircles:)];
             
             rateOfCircles = rateOfCircles - .3;
             if (rateOfCircles < .5) {
@@ -173,13 +173,13 @@
         }
     }
     else {
-        [self unschedule:@selector(addCircles)];
+        [self unschedule:@selector(addCircles:)];
     }
     
     
     if (numLocked == 3) {
         // game done
-        [self unschedule:@selector(addCircles)];
+        [self unschedule:@selector(addCircles:)];
     }
     else {
         gameTime += deltaTime;
@@ -220,7 +220,7 @@
 }
 
 -(void) endCircles {
-    [self unschedule:@selector(addCircles)];
+    [self unschedule:@selector(addCircles:)];
 }
 
 - (void)endScene {
@@ -229,7 +229,7 @@
 //                     [CCCallFunc actionWithTarget:self selector:@selector(endCircles)],
 //                     nil]];
     
-    [self unschedule:@selector(addCircles)];
+    [self unschedule:@selector(addCircles:)];
     
     CCMenu * myMenu = [CCMenu menuWithItems:nil];
     CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"restart_button.png"
