@@ -111,6 +111,16 @@
         if (self->_size_of_circle <= self->_correct_band + 10 || self->_size_of_circle >= self->_correct_band - 10) {
             // the circle is by the band
             self->_is_visible = false;
+            
+            //doesn't work because not visible
+//            CCParticleSystemQuad *star  = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
+//            star.position = ccp(self->_x_location, self->_y_location);
+//            star.endRadius = self->_correct_band;
+            // sunFire.posVar = ccp(supasupa.posVar.x, winSize.height);
+            //    supasupa.startSize *= 0.5;
+            //    supasupa.endSize *= 1;
+            //    supasupa.speed *= 0.5;
+//            [self addChild:star z:1];
         }
         
     }
