@@ -7,7 +7,7 @@
 //
 
 #import "StartMenu.h"
-#import "CircleClass.h"
+#import "HelloWorldLayer.h"
 
 @implementation StartMenu
 
@@ -66,7 +66,7 @@
 
 -(void)doSomething: (CCMenuItem  *) menuItem
 {
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:3.0 scene:[CircleClass scene] ]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:3.0 scene:[HelloWorldLayer scene] ]];
 }
 
 @end
