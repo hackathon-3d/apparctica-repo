@@ -12,5 +12,6 @@
 @interface HowToScene : CCLayer {
     
 }
++(CCScene *) scene;
 
 @end
