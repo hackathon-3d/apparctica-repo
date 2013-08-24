@@ -8,17 +8,10 @@
 
 #import "CircleClass.h"
 #import "CCTouchDispatcher.h"
+#import "HelloWorldLayer.h"
 
 @implementation CircleClass
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
-+(CCScene *) scene
-{
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-           
-	// return the scene
-	return scene;
-}
+
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -117,6 +110,7 @@
         if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 30) {
             // the circle is by the band
             self->_is_visible = false;
+            
         }
         
     }

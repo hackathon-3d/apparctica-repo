@@ -44,6 +44,14 @@
         
         _circles = [[CCArray alloc] init];
         _num_circles_at_a_time = 1;
+        
+        //Set the score to zero.
+        score = 0;
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        //Create and add the score label as a child.
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:34];
+        scoreLabel.position = ccp(winSize.width-30, winSize.height-30); //Middle of the screen...
+        [self addChild:scoreLabel z:1];
 	}
 	return self;
 }
@@ -72,6 +80,7 @@
     
     for (CircleClass *a_circle in _circles) {
         if (a_circle.isVisible == false || a_circle.isLocked == true) {
+            [self addPoint];
             [self removeChild:a_circle];
             [_circles removeObject:a_circle];
         }
@@ -93,6 +102,12 @@
     }
     
     
+}
+
+- (void)addPoint
+{
+    score = score + 1; //I think: score++; will also work.
+    [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
 }
 
 @end

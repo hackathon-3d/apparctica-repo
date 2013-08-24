@@ -16,11 +16,13 @@
 @interface HelloWorldLayer : CCLayer
 {
     CGFloat gameTime;
+    int score;
+    CCLabelTTF *scoreLabel;
     CCArray *_circles;
     int _num_circles_at_a_time;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
-
+- (void)addPoint;
 @end

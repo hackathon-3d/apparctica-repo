@@ -23,6 +23,4 @@
 -(bool) isVisible;
 -(bool) isLocked;
 
-+(CCScene *) scene;
-
 @end
