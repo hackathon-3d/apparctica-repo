@@ -91,32 +91,10 @@
 
 -(void) addCircles: (ccTime) delta
 {
-    NSLog([[NSString alloc] initWithFormat:@"delta: %f", (float)delta ]);
+    //NSLog([[NSString alloc] initWithFormat:@"delta: %f", (float)delta ]);
     CircleClass *new_class = [CircleClass node];
     CCLayer *layer = new_class;
-    CGSize size = [[CCDirector sharedDirector] winSize];
     
-    while (true) {
-        bool breakOut = true;
-        for (CircleClass *circle in _total_circles_ever) {
-            float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
-            
-            distance = sqrt(distance);
-            
-            if (distance <= [circle _correct_band]) {
-                // in a circle
-                breakOut = false;
-                
-                new_class._x_location = arc4random_uniform(size.width - 20);
-                new_class._y_location = arc4random_uniform(size.height - 20);
-            }
-        }
-        
-        if (breakOut == true) {
-            break;
-        }
-    }
-        
     [self addChild:layer];
     [_circles addObject:layer];
     [_total_circles_ever addObject:layer];
