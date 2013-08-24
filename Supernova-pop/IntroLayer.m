@@ -38,7 +38,7 @@
 -(id) init
 {
 	if( (self=[super init])) {
-
+[[CCDirector sharedDirector] setDisplayFPS:NO];
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 
