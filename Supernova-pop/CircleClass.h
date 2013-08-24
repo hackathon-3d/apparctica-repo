@@ -17,6 +17,7 @@
     float _rate_of_growth;
     bool _is_visible;
     bool _is_locked;
+    CCParticleSystemQuad *sunFire;
 }
 
 -(bool) isVisible;
