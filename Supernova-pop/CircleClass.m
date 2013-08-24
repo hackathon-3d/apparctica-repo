@@ -35,7 +35,7 @@
         self->_correct_band = 100 + [self randomFloatBetween:50 and:150];
         self->_is_visible = true;
         self->_is_locked = false;
-        self->_rate_of_growth = [self randomFloatBetween:0.4 and:2.5];
+        self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
         
         self.isTouchEnabled = YES;
         sunFire = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
@@ -66,15 +66,15 @@
 {
 
     // red
-    ccDrawColor4F(255, 0, 0, 255);
+    ccDrawColor4F(255, 0, 0, 0);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
 
-    glLineWidth(20);
+    
     ccDrawColor4F(108, 248, 252, 0);
     ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, CC_DEGREES_TO_RADIANS(360), 60, NO);
     
-
-    
+    ccDrawColor4F(108, 248, 252, 0);
+    ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 40, CC_DEGREES_TO_RADIANS(360), 60, NO);
 }
 
 - (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
@@ -84,11 +84,15 @@
 
 -(void) update:(ccTime)deltaTime
 {
+    if (self->_size_of_circle > self->_correct_band) {
+        self->_is_locked = true;
+    }
+    
+    
     if (self->_is_locked == false && self->_is_visible == true) {
         self->_size_of_circle = self->_size_of_circle + self->_rate_of_growth;
         sunFire.endRadius = self->_size_of_circle;
     }
-    
     
 }
 
@@ -110,7 +114,7 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 10) {
+        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 40) {
             // the circle is by the band
             self->_is_visible = false;
         }
