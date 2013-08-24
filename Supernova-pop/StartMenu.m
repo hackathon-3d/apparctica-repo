@@ -30,16 +30,31 @@
 -(id) init
 {
 	if( (self=[super init])) {
-        
-		CCMenu * myMenu = [CCMenu menuWithItems:nil];
-        CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"start_button.png"
-                                                            selectedImage: @"start_button.png"
-                                                                   target:self
-                                                                 selector:@selector(doSomething:)];
-        [myMenu addChild:menuItem1];
-        [self addChild:myMenu];
-        
         CGSize winSize = [CCDirector sharedDirector].winSize;
+
+		CCMenu * myMenu = [CCMenu menuWithItems:nil];
+//        CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"start_button.png"
+//                                                            selectedImage: @"start_button.png"
+//                                                                   target:self
+//                                                                 selector:@selector(doSomething:)];
+//        [myMenu addChild:menuItem1];
+        [CCMenuItemFont setFontName:@"Courier New"];
+        [CCMenuItemFont setFontSize:80];
+        
+        CCMenuItem *Resume= [CCMenuItemFont itemWithString:@"Start"
+                                                    target:self
+                                                  selector:@selector(doSomething:)];
+        [CCMenuItemFont setFontSize:40];
+
+        CCMenuItem *Quit = [CCMenuItemFont itemWithString:@"How To Play"
+                                                   target:self selector:@selector(doSomething:)];
+        
+        CCMenu *menu= [CCMenu menuWithItems: Resume, Quit, nil];
+        menu.position = ccp(winSize.width/2, winSize.height/2);
+        [menu alignItemsVerticallyWithPadding:13.5f];
+
+        [self addChild:menu];
+        
         // Add stars
         NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
         for(NSString *stars in starsArray) {
@@ -59,6 +74,20 @@
         supasupa.endSize *= 1;
         supasupa.speed *= 0.5;
         [self addChild:supasupa z:1];
+        
+        //animate title
+        CCSprite *mySprite = [CCSprite spriteWithFile:@"cooltext1162281600bb.png"];
+        mySprite.position = ccp(0,0);
+        [self addChild:mySprite];
+        [mySprite runAction: [CCMoveBy actionWithDuration:.9 position:ccp(winSize.width*.45,winSize.width*.60)]];
+        
+        CCSprite *popSprite = [CCSprite spriteWithFile:@"poptext.png"];
+        popSprite.position = ccp(0,0);
+        [self addChild:popSprite];
+        popSprite.rotation = -25;
+        id action1 = [CCDelayTime actionWithDuration:1];
+        id action2 = [CCMoveBy actionWithDuration:.40 position:ccp(winSize.width*.75,winSize.width*.50)];
+        [popSprite runAction: [CCSequence actions:action1, action2, nil]];
 	}
 	
 	return self;

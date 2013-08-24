@@ -10,6 +10,7 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import "CircleClass.h"
+#import "PauseScene.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -73,6 +74,23 @@
             [self addChild:starsEffect z:1];
         }
         
+        //menu
+		CCMenuItemImage *Pause = [CCMenuItemImage itemWithNormalImage:@"pause.png"
+                                                   selectedImage: @"pause.png"
+                                                          target:self
+                                                        selector:@selector(pause:)];
+//        CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"start_button.png"
+//                                                            selectedImage: @"start_button.png"
+//                                                                   target:self
+//                                                                 selector:@selector(doSomething:)];
+        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
+        PauseButton.position = ccp(40, winSize.height-40);
+        //[self schedule:@selector(tick:) interval:1.0f/60.0f];
+        [self addChild:PauseButton z:1000];
+        
+        
+       
+
         [self schedule:@selector(addCircles:) interval:rateOfCircles];
 	}
 	return self;
@@ -194,7 +212,38 @@
 
 -(void)doSomething: (CCMenuItem  *) menuItem
 {
+    [[CCDirector sharedDirector] resume];
+    [[CCDirector sharedDirector] startAnimation];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.3 scene:[HelloWorldLayer scene] ]];
+}
+
+-(void) pause: (CCMenuItem  *) menuItem
+
+{
+    
+    [[CCDirector sharedDirector] pushScene:[PauseScene node]];
+    
+//    [[CCDirector sharedDirector] stopAnimation];
+//    [[CCDirector sharedDirector] pause];
+    
+}
+
+- (void) applicationDidEnterBackground:(UIApplication *)application
+{
+    [[CCDirector sharedDirector] stopAnimation];
+    [[CCDirector sharedDirector] pause];
+}
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    [[CCDirector sharedDirector] stopAnimation];
+    [[CCDirector sharedDirector] pause];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[CCDirector sharedDirector] stopAnimation]; // call this to make sure you don't start a second display link!
+    [[CCDirector sharedDirector] resume];
+    [[CCDirector sharedDirector] startAnimation];
 }
 
 @end
