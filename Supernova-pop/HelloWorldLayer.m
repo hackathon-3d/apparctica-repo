@@ -189,6 +189,13 @@
                 [self addPoint];
                 
                 // TODO add a particle for smoke out!
+                CCParticleSystemQuad *explode = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
+                explode.position = ccp(a_circle._x_location, a_circle._y_location);
+                explode.endRadius = a_circle._size_of_circle;
+                explode.duration = .5;
+                
+                [self addChild:explode z:1000];
+
                 
                  [self removeChild:a_circle];
                 [_circles removeObject:a_circle];

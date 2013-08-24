@@ -88,7 +88,7 @@
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 25, 60);
     
     // steel blue
-    ccDrawColor4F(0, 0, 128, 255);
+    ccDrawColor4F(0, 0, 128, 128);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
  
 }
