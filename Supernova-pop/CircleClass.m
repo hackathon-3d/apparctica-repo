@@ -25,7 +25,7 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 100 + [self randomFloatBetween:50 and:150];
+        self->_correct_band = 25 + [self randomFloatBetween:50 and:250];
         self->_is_visible = true;
         self->_is_locked = false;
         self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
@@ -58,15 +58,16 @@
 -(void) draw
 {
 
-    // red
-    ccDrawColor4F(255, 0, 0, 0);
-    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
-
+    ccDrawColor4F(0, 0, 255, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
-    for (int i = 0; i <= 30; i++) {
-        ccDrawColor4F(0, 0, 255, 0);
-        ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - i, CC_DEGREES_TO_RADIANS(360), 60, NO);
-    }
+    ccDrawColor4F(0, 0, 0, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 30, 60);
+    
+    // red
+    ccDrawColor4F(255, 0, 0, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
+ 
 
 }
 
@@ -112,8 +113,13 @@
             self->_is_visible = false;
             
         }
+        else {
+            // to early... not within the band
+            self->_is_locked = true;
+        }
         
     }
+    
 }
 
 - (void)setInvisible:(CCNode *)node {

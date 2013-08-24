@@ -52,6 +52,7 @@
         scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:34];
         scoreLabel.position = ccp(winSize.width-30, winSize.height-30); //Middle of the screen...
         [self addChild:scoreLabel z:1];
+        _next_count_to_add_circles = 10;
 	}
 	return self;
 }
@@ -79,21 +80,26 @@
     gameTime += deltaTime;
     
     for (CircleClass *a_circle in _circles) {
-        if (a_circle.isVisible == false || a_circle.isLocked == true) {
+        if (a_circle.isVisible == false) {
             [self addPoint];
             [self removeChild:a_circle];
             [_circles removeObject:a_circle];
         }
+        
+        if (a_circle.isLocked == true) {
+            [_circles removeObject:a_circle];
+        }
     }
     
-    if ((int)ceil(gameTime) % 10 == 0) {
+    int intervalOfTen = (int)ceil(gameTime) % 10;
+
+    if (intervalOfTen == 0 && (int)ceil(gameTime) == _next_count_to_add_circles) {
         _num_circles_at_a_time += 1;
+        _next_count_to_add_circles += 10;
     }
     
     // create a circle
-    if ([_circles count] == 0) {
-        NSLog([[NSString alloc] initWithFormat:@"Time: %i", (int)ceil(gameTime) % 10]);
-        
+    if ([_circles count] == 0) {        
         for (int i = 0; i < _num_circles_at_a_time; i++) {
             CCLayer *layer = [CircleClass node];
             [self addChild:layer];

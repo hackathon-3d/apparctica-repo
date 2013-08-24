@@ -20,6 +20,7 @@
     CCLabelTTF *scoreLabel;
     CCArray *_circles;
     int _num_circles_at_a_time;
+    int _next_count_to_add_circles;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
