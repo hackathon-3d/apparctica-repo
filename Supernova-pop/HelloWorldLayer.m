@@ -21,6 +21,7 @@
 @implementation HelloWorldLayer
 
 @synthesize numLocked;
+@synthesize rateOfCircles, _total_circles_ever;
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -46,17 +47,20 @@
 		[self scheduleUpdate];
         
         _circles = [[CCArray alloc] init];
+        _total_circles_ever = [[NSMutableArray alloc] init];
         _num_circles_at_a_time = 1;
         
         //Set the score to zero.
         score = 0;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         //Create and add the score label as a child.
-        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:34];
-        scoreLabel.position = ccp(winSize.width-30, winSize.height-30); //Middle of the screen...
+        scoreLabel = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Marker Felt" fontSize:34];
+        scoreLabel.position = ccp(winSize.width-120, winSize.height-30); //Middle of the screen...
+        [scoreLabel setFontSize:64.0];
         [self addChild:scoreLabel z:1];
-        _next_count_to_add_circles = 10;
+        _next_count_to_add_circles = 5;
         numLocked = 0;
+        rateOfCircles = 3;
 
         // Add stars
         NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
@@ -87,6 +91,7 @@
         
        
 
+        [self schedule:@selector(addCircles:) interval:rateOfCircles];
 	}
 	return self;
 }
@@ -102,6 +107,39 @@
 	[super dealloc];
 }
 
+-(void) addCircles: (ccTime) delta
+{
+    NSLog([[NSString alloc] initWithFormat:@"delta: %f", (float)delta ]);
+    CircleClass *new_class = [CircleClass node];
+    CCLayer *layer = new_class;
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    while (true) {
+        bool breakOut = true;
+        for (CircleClass *circle in _total_circles_ever) {
+            float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
+            
+            distance = sqrt(distance);
+            
+            if (distance <= [circle _correct_band]) {
+                // in a circle
+                breakOut = false;
+                
+                new_class._x_location = arc4random_uniform(size.width - 20);
+                new_class._y_location = arc4random_uniform(size.height - 20);
+            }
+        }
+        
+        if (breakOut == true) {
+            break;
+        }
+    }
+        
+    [self addChild:layer];
+    [_circles addObject:layer];
+    [_total_circles_ever addObject:layer];
+}
+
 
 -(void) draw
 {
@@ -112,8 +150,21 @@
 {
     //NSLog([[NSString alloc] initWithFormat:@"Time: %f", deltaTime]);
     
-    if (numLocked == 3) {
+    //NSLog([[NSString alloc] initWithFormat:@"Count: %i", [_total_circles_ever count]]);
+    if ([_total_circles_ever count] > _next_count_to_add_circles && [_total_circles_ever count] % 5 == 0) {
+        [self unschedule:@selector(addCircles)];
         
+        rateOfCircles = rateOfCircles - .3;
+        if (rateOfCircles < .5) {
+            rateOfCircles = .5;
+        }
+        
+        [self schedule:@selector(addCircles:) interval:rateOfCircles];
+        _next_count_to_add_circles += 5;
+    }
+    
+    if (numLocked == 3) {
+        // game done
     }
     else {
         gameTime += deltaTime;
@@ -123,7 +174,6 @@
                 [self addPoint];
                 [self removeChild:a_circle];
                 [_circles removeObject:a_circle];
-                [_total_circles_ever removeObject:a_circle];
             }
             
             if (a_circle.isLocked == true) {
@@ -134,49 +184,6 @@
         
         if (numLocked == 3) {
             [self endScene];
-        }
-        else {
-            int intervalOfTen = (int)ceil(gameTime) % 10;
-            
-            if (intervalOfTen == 0 && (int)ceil(gameTime) == _next_count_to_add_circles) {
-                _num_circles_at_a_time += 1;
-                _next_count_to_add_circles += 10;
-            }
-            
-            // create a circle
-            if ([_circles count] == 0) {
-                for (int i = 0; i < _num_circles_at_a_time; i++) {
-                    CircleClass *new_class = [CircleClass node];
-                    CCLayer *layer = new_class;
-                    CGSize size = [[CCDirector sharedDirector] winSize];
-                    
-                    while (true) {
-                        bool breakOut = true;
-                        for (CircleClass *circle in _total_circles_ever) {
-                            float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
-                            
-                            distance = sqrt(distance);
-                            
-                            if (distance <= [circle _correct_band]) {
-                                // in a circle
-                                breakOut = false;
-                                
-                                new_class._x_location = arc4random_uniform(size.width - 20);
-                                new_class._y_location = arc4random_uniform(size.height - 20);
-                            }
-                        }
-                        
-                        if (breakOut == true) {
-                            break;
-                        }
-                    }
-                    
-                    [self addChild:layer];
-                    [_circles addObject:layer];
-                    [_total_circles_ever addObject:layer];
-                }
-            }
-            
         }
     }
     
@@ -221,8 +228,8 @@
 - (void)addPoint
 {
     score = score + 1; //I think: score++; will also work.
-    [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
-    [scoreLabel setFontSize:48.0];
+    [scoreLabel setString:[NSString stringWithFormat:@"Score: %d", score]];
+    
 }
 
 -(void)doSomething: (CCMenuItem  *) menuItem

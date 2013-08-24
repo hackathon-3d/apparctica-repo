@@ -14,7 +14,7 @@
 
 @synthesize _size_of_circle;
 @synthesize _correct_band;
-@synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location;
+@synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location, lastTimeScheduledBefore, circleSpawnDate;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -45,6 +45,9 @@
         self->_is_locked = false;
         self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
         
+        circleSpawnDate = [NSDate date];
+        lastTimeScheduledBefore = 0;//new var
+        
         self.isTouchEnabled = YES;
         sunFire = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
         sunFire.position = ccp(self->_x_location, self->_y_location);
@@ -73,17 +76,16 @@
 -(void) draw
 {
 
-    ccDrawColor4F(0, 0, 255, 255);
+    ccDrawColor4F(255, 165, 0, 255);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
     ccDrawColor4F(0, 0, 0, 255);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 20, 60);
     
-    // red
-    ccDrawColor4F(255, 0, 0, 255);
+    // steel blue
+    ccDrawColor4F(0, 0, 128, 255);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
  
-
 }
 
 - (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
@@ -97,9 +99,9 @@
         self->_is_locked = true;
     }
     
-    
     if (self->_is_locked == false && self->_is_visible == true) {
         self->_size_of_circle = self->_size_of_circle + self->_rate_of_growth;
+        sunFire.position = ccp(self->_x_location, self->_y_location);
         sunFire.endRadius = self->_size_of_circle;
     }
     

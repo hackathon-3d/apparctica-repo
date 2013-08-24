@@ -19,9 +19,9 @@
     int score;
     CCLabelTTF *scoreLabel;
     CCArray *_circles;
-    CCArray *_total_circles_ever;
     int _num_circles_at_a_time;
     int _next_count_to_add_circles;
+    CCParticleSystemQuad *sunFire;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
@@ -29,8 +29,13 @@
 
 - (void)endScene;
 @property int numLocked;
+@property NSMutableArray *_total_circles_ever;
 
 - (void)addPoint;
 -(void)doSomething: (CCMenuItem  *) menuItem;
+-(void)addCircles: (ccTime)delta;
+
+@property float rateOfCircles;
+
 
 @end
