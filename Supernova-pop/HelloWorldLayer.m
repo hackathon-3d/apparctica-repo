@@ -205,6 +205,11 @@
                 [_circles removeObject:a_circle];
                 numLocked++;
                 [lifeLabel setString:[NSString stringWithFormat:@"Lives: %d", 3 - numLocked]];
+                
+                ccDrawColor4F(255, 255, 255, 255);
+                ccDrawSolidCircle(ccp(a_circle._x_location, a_circle._y_location), a_circle._correct_band, 60);
+                
+                [a_circle.sunFire removeFromParentAndCleanup:YES];
             }
             
         }
