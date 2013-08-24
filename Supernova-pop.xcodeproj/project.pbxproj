@@ -167,6 +167,8 @@
 		ECD0B10517C8F40300897C7B /* HowToScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD0B10417C8F40300897C7B /* HowToScene.m */; };
 		ECD0B10717C8F6C300897C7B /* cooltext1162281600bb.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */; };
 		ECD0B10917C8F90F00897C7B /* poptext.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10817C8F90F00897C7B /* poptext.png */; };
+		ECD0B10B17C8FF0600897C7B /* super@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10A17C8FF0600897C7B /* super@2x.png */; };
+		ECD0B10D17C8FF0F00897C7B /* pop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B10C17C8FF0F00897C7B /* pop@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -481,6 +483,8 @@
 		ECD0B10417C8F40300897C7B /* HowToScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToScene.m; sourceTree = "<group>"; };
 		ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cooltext1162281600bb.png; sourceTree = "<group>"; };
 		ECD0B10817C8F90F00897C7B /* poptext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poptext.png; sourceTree = "<group>"; };
+		ECD0B10A17C8FF0600897C7B /* super@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "super@2x.png"; sourceTree = "<group>"; };
+		ECD0B10C17C8FF0F00897C7B /* pop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pop@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +626,8 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0B10C17C8FF0F00897C7B /* pop@2x.png */,
+				ECD0B10A17C8FF0600897C7B /* super@2x.png */,
 				ECD0B10617C8F6C300897C7B /* cooltext1162281600bb.png */,
 				ECD0B10817C8F90F00897C7B /* poptext.png */,
 				ECD0B0FC17C8ED6500897C7B /* Icon-72.png */,
@@ -1090,6 +1096,8 @@
 				ECD0B0FF17C8ED6500897C7B /* Icon-72@2x.png in Resources */,
 				ECD0B10717C8F6C300897C7B /* cooltext1162281600bb.png in Resources */,
 				ECD0B10917C8F90F00897C7B /* poptext.png in Resources */,
+				ECD0B10B17C8FF0600897C7B /* super@2x.png in Resources */,
+				ECD0B10D17C8FF0F00897C7B /* pop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
