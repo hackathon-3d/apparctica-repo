@@ -34,8 +34,9 @@
 @property CCSprite *lifeOne;
 @property CCSprite *lifeTwo;
 @property CCSprite *lifeThree;
+@property int numToGoAfterEndGame;
 
-
+-(void) endCircles;
 - (void)addPoint;
 -(void)doSomething: (CCMenuItem  *) menuItem;
 -(void)addCircles: (ccTime)delta;

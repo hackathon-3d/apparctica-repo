@@ -24,7 +24,7 @@
 
 @synthesize numLocked;
 @synthesize rateOfCircles, _total_circles_ever;
-@synthesize lifeOne, lifeThree, lifeTwo;
+@synthesize lifeOne, lifeThree, lifeTwo, numToGoAfterEndGame;
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -58,25 +58,26 @@
         CGSize winSize = [CCDirector sharedDirector].winSize;
         //Create and add the score label as a child.
         scoreLabel = [CCLabelTTF labelWithString:@"Score: 0" fontName:@"Marker Felt" fontSize:34];
-        scoreLabel.position = ccp(winSize.width-120, winSize.height-30); //Middle of the screen...
-        [scoreLabel setFontSize:64.0];
+        scoreLabel.position = ccp(winSize.width-60, winSize.height-30); //Middle of the screen...
+        [scoreLabel setFontSize:32.0];
         [self addChild:scoreLabel z:1000];
         
         
         //Create and add the highscore label as a child.
         CCLabelTTF *highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %d",[[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ]] fontName:@"Marker Felt" fontSize:34];
-        highscoreLabel.position = ccp(winSize.width-110, winSize.height-95); //Middle of the screen...
+        highscoreLabel.position = ccp(winSize.width-87, winSize.height-90); //Middle of the screen...
         [highscoreLabel setFontSize:32.0];
         [self addChild:highscoreLabel z:1000];
         
         lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
-        lifeLabel.position = ccp(winSize.width-120, winSize.height-90); //Middle of the screen...
-        [lifeLabel setFontSize:64.0];
+        lifeLabel.position = ccp(winSize.width-60, winSize.height-60); //Middle of the screen...
+        [lifeLabel setFontSize:32.0];
         [self addChild:lifeLabel z:1];
         
         _next_count_to_add_circles = 3;
         numLocked = 0;
         rateOfCircles = 3;
+        numToGoAfterEndGame = 10;
 
         // Add stars
         NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
@@ -158,20 +159,27 @@
     //NSLog([[NSString alloc] initWithFormat:@"Time: %f", deltaTime]);
     
     //NSLog([[NSString alloc] initWithFormat:@"Count: %i", [_total_circles_ever count]]);
-    if ([_total_circles_ever count] > _next_count_to_add_circles && [_total_circles_ever count] % 5 == 0) {
-        [self unschedule:@selector(addCircles)];
-        
-        rateOfCircles = rateOfCircles - .3;
-        if (rateOfCircles < .5) {
-            rateOfCircles = .5;
+    if (numLocked < 3) {
+        if ([_total_circles_ever count] > _next_count_to_add_circles && [_total_circles_ever count] % 5 == 0) {
+            [self unschedule:@selector(addCircles)];
+            
+            rateOfCircles = rateOfCircles - .3;
+            if (rateOfCircles < .5) {
+                rateOfCircles = .5;
+            }
+            
+            [self schedule:@selector(addCircles:) interval:rateOfCircles];
+            _next_count_to_add_circles += 5;
         }
-        
-        [self schedule:@selector(addCircles:) interval:rateOfCircles];
-        _next_count_to_add_circles += 5;
     }
+    else {
+        [self unschedule:@selector(addCircles)];
+    }
+    
     
     if (numLocked == 3) {
         // game done
+        [self unschedule:@selector(addCircles)];
     }
     else {
         gameTime += deltaTime;
@@ -204,7 +212,17 @@
     
 }
 
+-(void) endCircles {
+    [self unschedule:@selector(addCircles)];
+}
+
 - (void)endScene {
+    
+//    [self runAction:[CCSequence actions:[CCDelayTime actionWithDuration:5],
+//                     [CCCallFunc actionWithTarget:self selector:@selector(endCircles)],
+//                     nil]];
+    
+    [self unschedule:@selector(addCircles)];
     
     CCMenu * myMenu = [CCMenu menuWithItems:nil];
     CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"restart_button.png"
