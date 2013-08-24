@@ -76,18 +76,39 @@
         [self addChild:supasupa z:1];
         
         //animate title
-        CCSprite *mySprite = [CCSprite spriteWithFile:@"cooltext1162281600bb.png"];
-        mySprite.position = ccp(0,0);
-        [self addChild:mySprite];
-        [mySprite runAction: [CCMoveBy actionWithDuration:.9 position:ccp(winSize.width*.45,winSize.width*.60)]];
         
-        CCSprite *popSprite = [CCSprite spriteWithFile:@"poptext.png"];
-        popSprite.position = ccp(0,0);
-        [self addChild:popSprite];
-        popSprite.rotation = -25;
-        id action1 = [CCDelayTime actionWithDuration:1];
-        id action2 = [CCMoveBy actionWithDuration:.40 position:ccp(winSize.width*.75,winSize.width*.50)];
-        [popSprite runAction: [CCSequence actions:action1, action2, nil]];
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+            ([UIScreen mainScreen].scale == 2.0)) {
+            // Retina display
+            CCSprite *mySprite = [CCSprite spriteWithFile:@"super@2x.png"];
+            mySprite.scale = .8;
+            CCSprite *popSprite = [CCSprite spriteWithFile:@"pop@2x.png"];
+            mySprite.position = ccp(0,0);
+            [self addChild:mySprite];
+            [mySprite runAction: [CCMoveBy actionWithDuration:.9 position:ccp(winSize.width*.50,winSize.width*.60)]];
+            
+            popSprite.position = ccp(0,0);
+            [self addChild:popSprite];
+            popSprite.rotation = -25;
+            id action1 = [CCDelayTime actionWithDuration:1];
+            id action2 = [CCMoveBy actionWithDuration:.40 position:ccp(winSize.width*.85,winSize.width*.52)];
+            [popSprite runAction: [CCSequence actions:action1, action2, nil]];
+        } else {
+            // non-Retina display
+            CCSprite *mySprite = [CCSprite spriteWithFile:@"cooltext1162281600bb.png"];
+            CCSprite *popSprite = [CCSprite spriteWithFile:@"poptext.png"];
+            mySprite.position = ccp(0,0);
+            [self addChild:mySprite];
+            [mySprite runAction: [CCMoveBy actionWithDuration:.9 position:ccp(winSize.width*.45,winSize.width*.60)]];
+            
+            popSprite.position = ccp(0,0);
+            [self addChild:popSprite];
+            popSprite.rotation = -25;
+            id action1 = [CCDelayTime actionWithDuration:1];
+            id action2 = [CCMoveBy actionWithDuration:.40 position:ccp(winSize.width*.75,winSize.width*.50)];
+            [popSprite runAction: [CCSequence actions:action1, action2, nil]];
+        }
+        
 	}
 	
 	return self;

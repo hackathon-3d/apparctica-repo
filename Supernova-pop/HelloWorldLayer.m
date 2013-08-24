@@ -90,9 +90,18 @@
 //                                                            selectedImage: @"start_button.png"
 //                                                                   target:self
 //                                                                 selector:@selector(doSomething:)];
+       
+        
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+            ([UIScreen mainScreen].scale == 2.0)) {
+            // Retina display
+            Pause.scale = 2.2;
+        } else {
+            // non-Retina display
+            Pause.scale = 1.2;
+        }
         CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
-        PauseButton.position = ccp(40, winSize.height-40);
-        //[self schedule:@selector(tick:) interval:1.0f/60.0f];
+        PauseButton.position = ccp(35, winSize.height-35);
         [self addChild:PauseButton z:1000];
         
         
