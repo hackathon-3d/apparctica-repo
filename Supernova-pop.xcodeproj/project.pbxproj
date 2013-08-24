@@ -156,6 +156,8 @@
 		EC79213817C870110032D2A4 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79213717C870110032D2A4 /* StartMenu.m */; };
 		EC79213A17C8728C0032D2A4 /* start_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79213917C8728C0032D2A4 /* start_button.png */; };
 		EC79213C17C883230032D2A4 /* supasupa.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213B17C883230032D2A4 /* supasupa.plist */; };
+		EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213D17C8881B0032D2A4 /* sun_fire.plist */; };
+		EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213F17C889BE0032D2A4 /* power_suck.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -457,6 +459,8 @@
 		EC79213717C870110032D2A4 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
 		EC79213917C8728C0032D2A4 /* start_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_button.png; sourceTree = "<group>"; };
 		EC79213B17C883230032D2A4 /* supasupa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = supasupa.plist; sourceTree = "<group>"; };
+		EC79213D17C8881B0032D2A4 /* sun_fire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sun_fire.plist; sourceTree = "<group>"; };
+		EC79213F17C889BE0032D2A4 /* power_suck.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = power_suck.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,6 +508,8 @@
 		76E228E617C85CF100CDC0E2 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				EC79213F17C889BE0032D2A4 /* power_suck.plist */,
+				EC79213D17C8881B0032D2A4 /* sun_fire.plist */,
 				EC79213B17C883230032D2A4 /* supasupa.plist */,
 				76E228E717C85CF100CDC0E2 /* Stars1.plist */,
 				76E228E817C85CF100CDC0E2 /* Stars2.plist */,
@@ -1044,6 +1050,8 @@
 				EC79213517C86ED90032D2A4 /* Default-Landscape~ipad.png in Resources */,
 				EC79213A17C8728C0032D2A4 /* start_button.png in Resources */,
 				EC79213C17C883230032D2A4 /* supasupa.plist in Resources */,
+				EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */,
+				EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

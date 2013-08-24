@@ -38,6 +38,14 @@
         self->_rate_of_growth = [self randomFloatBetween:0.4 and:2.5];
         
         self.isTouchEnabled = YES;
+        sunFire = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
+        sunFire.position = ccp(self->_x_location, self->_y_location);
+        sunFire.endRadius = 0;
+        // sunFire.posVar = ccp(supasupa.posVar.x, winSize.height);
+        //    supasupa.startSize *= 0.5;
+        //    supasupa.endSize *= 1;
+        //    supasupa.speed *= 0.5;
+        [self addChild:sunFire z:1];
 	}
 	return self;
 }
@@ -65,6 +73,8 @@
     ccDrawColor4F(108, 248, 252, 0);
     ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, CC_DEGREES_TO_RADIANS(360), 60, NO);
     
+
+    
 }
 
 - (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
@@ -76,6 +86,7 @@
 {
     if (self->_is_locked == false && self->_is_visible == true) {
         self->_size_of_circle = self->_size_of_circle + self->_rate_of_growth;
+        sunFire.endRadius = self->_size_of_circle;
     }
     
     
