@@ -153,6 +153,8 @@
 		EC79211C17C841580032D2A4 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79211B17C841580032D2A4 /* IntroLayer.m */; };
 		EC79212F17C86C850032D2A4 /* Default-Landscape~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */; };
 		EC79213517C86ED90032D2A4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */; };
+		EC79213817C870110032D2A4 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79213717C870110032D2A4 /* StartMenu.m */; };
+		EC79213A17C8728C0032D2A4 /* start_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79213917C8728C0032D2A4 /* start_button.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -450,6 +452,9 @@
 		EC79211B17C841580032D2A4 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad@2x.png"; path = "../Default-Landscape~ipad@2x.png"; sourceTree = "<group>"; };
 		EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		EC79213617C870110032D2A4 /* StartMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenu.h; sourceTree = "<group>"; };
+		EC79213717C870110032D2A4 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
+		EC79213917C8728C0032D2A4 /* start_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start_button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +577,8 @@
 				EC79211817C841580032D2A4 /* HelloWorldLayer.m */,
 				EC79211A17C841580032D2A4 /* IntroLayer.h */,
 				EC79211B17C841580032D2A4 /* IntroLayer.m */,
+				EC79213617C870110032D2A4 /* StartMenu.h */,
+				EC79213717C870110032D2A4 /* StartMenu.m */,
 				EC791F8417C841560032D2A4 /* Resources */,
 				EC791F9C17C841560032D2A4 /* libs */,
 				EC79211017C841580032D2A4 /* Supporting Files */,
@@ -582,6 +589,7 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC79213917C8728C0032D2A4 /* start_button.png */,
 				EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */,
 				EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */,
 				76E228DD17C85CF100CDC0E2 /* Backgrounds */,
@@ -1031,6 +1039,7 @@
 				76E2290717C85CF100CDC0E2 /* Sprites.pvr.ccz in Resources */,
 				EC79212F17C86C850032D2A4 /* Default-Landscape~ipad@2x.png in Resources */,
 				EC79213517C86ED90032D2A4 /* Default-Landscape~ipad.png in Resources */,
+				EC79213A17C8728C0032D2A4 /* start_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,6 +1163,7 @@
 				EC79211917C841580032D2A4 /* HelloWorldLayer.m in Sources */,
 				EC79211C17C841580032D2A4 /* IntroLayer.m in Sources */,
 				76E228DC17C8524000CDC0E2 /* CircleClass.m in Sources */,
+				EC79213817C870110032D2A4 /* StartMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
