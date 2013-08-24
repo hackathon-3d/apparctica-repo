@@ -66,7 +66,7 @@
 
 -(void)doSomething: (CCMenuItem  *) menuItem
 {
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:3.0 scene:[HelloWorldLayer scene] ]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.3 scene:[HelloWorldLayer scene] ]];
 }
 
 @end
