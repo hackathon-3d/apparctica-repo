@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
+#import "CircleClass.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
@@ -23,9 +24,8 @@
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+    
+    HelloWorldLayer *layer = [HelloWorldLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -40,10 +40,9 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-		[self scheduleUpdateWithPriority:-10];
+		[self scheduleUpdate];
         
-        self->_size_of_circle = 20;
-
+        _circles = [[CCArray alloc] init];
 	}
 	return self;
 }
@@ -63,14 +62,27 @@
 -(void) draw
 {
     
-    ccDrawSolidCircle(ccp(310, 150), self->_size_of_circle, 50);
-    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
 }
 
 -(void) update:(ccTime)deltaTime
 {
     //NSLog([[NSString alloc] initWithFormat:@"Time: %f", deltaTime]);
-    self->_size_of_circle = self->_size_of_circle + .1;
+    gameTime += deltaTime;
+    
+    for (CircleClass *a_circle in _circles) {
+        if (a_circle.isVisible == false) {
+            [self removeChild:a_circle];
+            [_circles removeObject:a_circle];
+        }
+    }
+    
+    // create a circle
+    if ([_circles count] == 0) {
+        CCLayer *layer = [CircleClass node];
+        [self addChild:layer];
+        [_circles addObject:layer];
+    }
+    
     
 }
 

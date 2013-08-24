@@ -16,9 +16,6 @@
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
            
-    // 'layer' is an autorelease object.
-    [scene addChild:[CircleClass node]];
-	
 	// return the scene
 	return scene;
 }
@@ -32,12 +29,14 @@
 		[self scheduleUpdateWithPriority:-10];
         CGSize size = [[CCDirector sharedDirector] winSize];
 
-        self->_size_of_circle = 20;
+        self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 200 + [self randomFloatBetween:10 and:50];
+        self->_correct_band = 175 + [self randomFloatBetween:50 and:150];
         self->_is_visible = true;
         self->_is_locked = false;
+        self->_rate_of_growth = [self randomFloatBetween:0.4 and:2.5];
+        
         self.isTouchEnabled = YES;
 	}
 	return self;
@@ -57,10 +56,10 @@
 
 -(void) draw
 {
-    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
+    ccDrawColor4F(255, 0, 0, 255);
     ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
     
-    ccDrawColor4F(0.0f, 1.0f, 0.0f, 1.0f);
+    ccDrawColor4F(255, 255, 255, 255);
         
     ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, CC_DEGREES_TO_RADIANS(360), 60, NO);
     
@@ -74,12 +73,9 @@
 -(void) update:(ccTime)deltaTime
 {
     if (self->_is_locked == false && self->_is_visible == true) {
-        self->_size_of_circle = self->_size_of_circle + .8;
+        self->_size_of_circle = self->_size_of_circle + self->_rate_of_growth;
     }
     
-    if (self->_is_visible == false) {
-        [self removeChild:self];
-    }
     
 }
 
@@ -111,6 +107,10 @@
 
 - (void)setInvisible:(CCNode *)node {
     node.visible = NO;
+}
+
+- (bool)isVisible {
+    return self->_is_visible;
 }
 
 @end

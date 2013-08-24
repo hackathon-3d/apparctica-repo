@@ -14,13 +14,12 @@
     float _x_location;
     float _y_location;
     float _correct_band;
-    CCArray *_asteroids;
-    int _nextAsteroid;
-    double _nextAsteroidSpawn;
-    CCSpriteBatchNode *_batchNode;
+    float _rate_of_growth;
     bool _is_visible;
     bool _is_locked;
 }
+
+-(bool) isVisible;
 
 +(CCScene *) scene;
 

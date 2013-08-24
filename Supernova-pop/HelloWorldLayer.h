@@ -15,7 +15,8 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer
 {
-    float _size_of_circle;
+    CGFloat gameTime;
+    CCArray *_circles;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
