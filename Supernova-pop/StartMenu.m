@@ -53,7 +53,7 @@
         }
         
         CCParticleSystemQuad *supasupa = [CCParticleSystemQuad particleWithFile:@"supasupa.plist"];
-        supasupa.position = ccp(winSize.width, winSize.height);
+        supasupa.position = ccp(0, winSize.height);
         supasupa.posVar = ccp(supasupa.posVar.x, winSize.height);
         supasupa.startSize *= 0.5;
         supasupa.endSize *= 1;

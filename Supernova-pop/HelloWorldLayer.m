@@ -46,8 +46,28 @@
         
         _circles = [[CCArray alloc] init];
         _num_circles_at_a_time = 1;
+        
+        //Set the score to zero.
+        score = 0;
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        //Create and add the score label as a child.
+        scoreLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:34];
+        scoreLabel.position = ccp(winSize.width-30, winSize.height-30); //Middle of the screen...
+        [self addChild:scoreLabel z:1];
         _next_count_to_add_circles = 10;
         numLocked = 0;
+
+        // Add stars
+        NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
+        for(NSString *stars in starsArray) {
+            CCParticleSystemQuad *starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+            starsEffect.position = ccp(winSize.width, winSize.height);
+            starsEffect.posVar = ccp(starsEffect.posVar.x, winSize.height);
+            starsEffect.startSize *= 0.5;
+            starsEffect.endSize *= 1;
+            starsEffect.speed *= 0.5;
+            [self addChild:starsEffect z:1];
+        }
 	}
 	return self;
 }
@@ -72,83 +92,123 @@
 -(void) update:(ccTime)deltaTime
 {
     //NSLog([[NSString alloc] initWithFormat:@"Time: %f", deltaTime]);
-    gameTime += deltaTime;
-    
-    for (CircleClass *a_circle in _circles) {
-        if (a_circle.isVisible == false) {
-            [self removeChild:a_circle];
-            [_circles removeObject:a_circle];
-        }
-        
-        if (a_circle.isLocked == true) {
-            [_circles removeObject:a_circle];
-            numLocked++;
-        }
-    }
     
     if (numLocked == 3) {
-        [self endScene];
+        
     }
-    
-    int intervalOfTen = (int)ceil(gameTime) % 10;
-
-    if (intervalOfTen == 0 && (int)ceil(gameTime) == _next_count_to_add_circles) {
-        _num_circles_at_a_time += 1;
-        _next_count_to_add_circles += 10;
-    }
-    
-    // create a circle
-    if ([_circles count] == 0) {        
-        for (int i = 0; i < _num_circles_at_a_time; i++) {
-            CircleClass *new_class = [CircleClass node];
-            CCLayer *layer = new_class;
-            CGSize size = [[CCDirector sharedDirector] winSize];
+    else {
+        gameTime += deltaTime;
+        
+        for (CircleClass *a_circle in _circles) {
+            if (a_circle.isVisible == false) {
+                [self addPoint];
+                [self removeChild:a_circle];
+                [_circles removeObject:a_circle];
+                [_total_circles_ever removeObject:a_circle];
+            }
             
-            while (true) {
-                bool breakOut = true;
-                for (CircleClass *circle in _circles) {
-                    float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
+            if (a_circle.isLocked == true) {
+                [_circles removeObject:a_circle];
+                numLocked++;
+            }
+        }
+        
+        if (numLocked == 3) {
+            [self endScene];
+        }
+        else {
+            int intervalOfTen = (int)ceil(gameTime) % 10;
+            
+            if (intervalOfTen == 0 && (int)ceil(gameTime) == _next_count_to_add_circles) {
+                _num_circles_at_a_time += 1;
+                _next_count_to_add_circles += 10;
+            }
+            
+            // create a circle
+            if ([_circles count] == 0) {
+                for (int i = 0; i < _num_circles_at_a_time; i++) {
+                    CircleClass *new_class = [CircleClass node];
+                    CCLayer *layer = new_class;
+                    CGSize size = [[CCDirector sharedDirector] winSize];
                     
-                    distance = sqrt(distance);
-                    
-                    if (distance <= [circle _size_of_circle]) {
-                        // in a circle
-                        breakOut = false;
+                    while (true) {
+                        bool breakOut = true;
+                        for (CircleClass *circle in _total_circles_ever) {
+                            float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
+                            
+                            distance = sqrt(distance);
+                            
+                            if (distance <= [circle _correct_band]) {
+                                // in a circle
+                                breakOut = false;
+                                
+                                new_class._x_location = arc4random_uniform(size.width - 20);
+                                new_class._y_location = arc4random_uniform(size.height - 20);
+                            }
+                        }
                         
-                        new_class._x_location = arc4random_uniform(size.width - 20);
-                        new_class._y_location = arc4random_uniform(size.height - 20);
+                        if (breakOut == true) {
+                            break;
+                        }
                     }
-                }
-                
-                if (breakOut == true) {
-                    break;
+                    
+                    [self addChild:layer];
+                    [_circles addObject:layer];
+                    [_total_circles_ever addObject:layer];
                 }
             }
             
-            [self addChild:layer];
-            [_circles addObject:layer];
         }
     }
     
+    
+        
     
 }
 
 - (void)endScene {
     
+    CCMenu * myMenu = [CCMenu menuWithItems:nil];
+    CCMenuItemImage *menuItem1 = [CCMenuItemImage itemWithNormalImage:@"restart_button.png"
+                                                        selectedImage: @"restart_button.png"
+                                                               target:self
+                                                             selector:@selector(doSomething:)];
+    [myMenu addChild:menuItem1];
+    [self addChild:myMenu];
+    
     CGSize winSize = [CCDirector sharedDirector].winSize;
-    
-    NSString *message = @"You lose!";
-
-    CCLabelBMFont *label;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        label = [CCLabelBMFont labelWithString:message fntFile:@"Arial-hd.fnt"];
-    } else {
-        label = [CCLabelBMFont labelWithString:message fntFile:@"Arial.fnt"];
+    // Add stars
+    NSArray *starsArray = [NSArray arrayWithObjects:@"Stars1.plist", @"Stars2.plist", @"Stars3.plist", nil];
+    for(NSString *stars in starsArray) {
+        CCParticleSystemQuad *starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+        starsEffect.position = ccp(winSize.width, winSize.height);
+        starsEffect.posVar = ccp(starsEffect.posVar.x, winSize.height);
+        starsEffect.startSize *= 0.5;
+        starsEffect.endSize *= 1;
+        starsEffect.speed *= 0.5;
+        [self addChild:starsEffect z:1];
     }
-    label.scale = 0.1;
-    label.position = ccp(winSize.width/2, winSize.height * 0.6);
-    [self addChild:label];
     
+    CCParticleSystemQuad *supasupa = [CCParticleSystemQuad particleWithFile:@"supasupa.plist"];
+    supasupa.position = ccp(0, winSize.height);
+    supasupa.posVar = ccp(supasupa.posVar.x, winSize.height);
+    supasupa.startSize *= 0.5;
+    supasupa.endSize *= 0.8;
+    supasupa.speed *= 0.5;
+    [self addChild:supasupa z:1];
+    
+}
+
+- (void)addPoint
+{
+    score = score + 1; //I think: score++; will also work.
+    [scoreLabel setString:[NSString stringWithFormat:@"%d", score]];
+    [scoreLabel setFontSize:48.0];
+}
+
+-(void)doSomething: (CCMenuItem  *) menuItem
+{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:.3 scene:[HelloWorldLayer scene] ]];
 }
 
 @end

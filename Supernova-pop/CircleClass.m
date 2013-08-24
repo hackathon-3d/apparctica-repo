@@ -8,6 +8,7 @@
 
 #import "CircleClass.h"
 #import "CCTouchDispatcher.h"
+#import "HelloWorldLayer.h"
 
 @implementation CircleClass
 
@@ -26,6 +27,7 @@
 	return scene;
 }
 
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -38,7 +40,7 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 25 + [self randomFloatBetween:50 and:250];
+        self->_correct_band = 25 + [self randomFloatBetween:50 and:225];
         self->_is_visible = true;
         self->_is_locked = false;
         self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
@@ -70,15 +72,17 @@
 
 -(void) draw
 {
-    // red
-    ccDrawColor4F(255, 0, 0, 0);
-    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
 
+    ccDrawColor4F(0, 0, 255, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band, 60);
     
-    for (int i = 0; i <= 30; i++) {
-        ccDrawColor4F(0, 0, 255, 0);
-        ccDrawCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - i, CC_DEGREES_TO_RADIANS(360), 60, NO);
-    }
+    ccDrawColor4F(0, 0, 0, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_correct_band - 20, 60);
+    
+    // red
+    ccDrawColor4F(255, 0, 0, 255);
+    ccDrawSolidCircle(ccp(self->_x_location, self->_y_location), self->_size_of_circle, 60);
+ 
 
 }
 
@@ -89,7 +93,7 @@
 
 -(void) update:(ccTime)deltaTime
 {
-    if (self->_size_of_circle > self->_correct_band) {
+    if (self->_size_of_circle > self->_correct_band + 10) {
         self->_is_locked = true;
     }
     
@@ -103,7 +107,7 @@
 
 -(void) registerWithTouchDispatcher
 {
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:NO];
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -119,9 +123,10 @@
     
     if (distance <= self->_size_of_circle) {
         // within the circle
-        if (self->_size_of_circle <= self->_correct_band && self->_size_of_circle >= self->_correct_band - 30) {
+        if (self->_size_of_circle <= self->_correct_band + 10 && self->_size_of_circle >= self->_correct_band - 40) {
             // the circle is by the band
             self->_is_visible = false;
+            
         }
         else {
             // too early... not within the band

@@ -27,6 +27,7 @@
 		76E2290517C85CF100CDC0E2 /* SpaceGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 76E228F117C85CF100CDC0E2 /* SpaceGame.caf */; };
 		76E2290617C85CF100CDC0E2 /* Sprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76E228F317C85CF100CDC0E2 /* Sprites.plist */; };
 		76E2290717C85CF100CDC0E2 /* Sprites.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 76E228F417C85CF100CDC0E2 /* Sprites.pvr.ccz */; };
+		76FCF80317C8B01A00F44CB1 /* restart_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 76FCF80217C8B01A00F44CB1 /* restart_button.png */; };
 		EC791F7017C841560032D2A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC791F6F17C841560032D2A4 /* QuartzCore.framework */; };
 		EC791F7217C841560032D2A4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC791F7117C841560032D2A4 /* OpenGLES.framework */; };
 		EC791F7417C841560032D2A4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC791F7317C841560032D2A4 /* OpenAL.framework */; };
@@ -182,6 +183,7 @@
 		76E228F117C85CF100CDC0E2 /* SpaceGame.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceGame.caf; sourceTree = "<group>"; };
 		76E228F317C85CF100CDC0E2 /* Sprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Sprites.plist; sourceTree = "<group>"; };
 		76E228F417C85CF100CDC0E2 /* Sprites.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sprites.pvr.ccz; sourceTree = "<group>"; };
+		76FCF80217C8B01A00F44CB1 /* restart_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restart_button.png; sourceTree = "<group>"; };
 		EC791F6C17C841560032D2A4 /* Supernova-pop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Supernova-pop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC791F6F17C841560032D2A4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EC791F7117C841560032D2A4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -598,6 +600,7 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76FCF80217C8B01A00F44CB1 /* restart_button.png */,
 				EC79213917C8728C0032D2A4 /* start_button.png */,
 				EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */,
 				EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */,
@@ -1052,6 +1055,7 @@
 				EC79213C17C883230032D2A4 /* supasupa.plist in Resources */,
 				EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */,
 				EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */,
+				76FCF80317C8B01A00F44CB1 /* restart_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
