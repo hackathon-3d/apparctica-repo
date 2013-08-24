@@ -151,13 +151,15 @@
 		EC79211617C841580032D2A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79211517C841580032D2A4 /* AppDelegate.m */; };
 		EC79211917C841580032D2A4 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79211817C841580032D2A4 /* HelloWorldLayer.m */; };
 		EC79211C17C841580032D2A4 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79211B17C841580032D2A4 /* IntroLayer.m */; };
-		EC79212F17C86C850032D2A4 /* Default-Landscape~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */; };
 		EC79213517C86ED90032D2A4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */; };
 		EC79213817C870110032D2A4 /* StartMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79213717C870110032D2A4 /* StartMenu.m */; };
 		EC79213A17C8728C0032D2A4 /* start_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EC79213917C8728C0032D2A4 /* start_button.png */; };
 		EC79213C17C883230032D2A4 /* supasupa.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213B17C883230032D2A4 /* supasupa.plist */; };
 		EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213D17C8881B0032D2A4 /* sun_fire.plist */; };
 		EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC79213F17C889BE0032D2A4 /* power_suck.plist */; };
+		ECD0B0EE17C8ACA300897C7B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0EC17C8ACA300897C7B /* Icon-72.png */; };
+		ECD0B0F117C8ACAF00897C7B /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0F017C8ACAF00897C7B /* Icon-72@2x.png */; };
+		ECD0B0F317C8ACC100897C7B /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0B0F217C8ACC100897C7B /* Default-Landscape@2x~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -453,7 +455,6 @@
 		EC79211817C841580032D2A4 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		EC79211A17C841580032D2A4 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		EC79211B17C841580032D2A4 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad@2x.png"; path = "../Default-Landscape~ipad@2x.png"; sourceTree = "<group>"; };
 		EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		EC79213617C870110032D2A4 /* StartMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenu.h; sourceTree = "<group>"; };
 		EC79213717C870110032D2A4 /* StartMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartMenu.m; sourceTree = "<group>"; };
@@ -461,6 +462,9 @@
 		EC79213B17C883230032D2A4 /* supasupa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = supasupa.plist; sourceTree = "<group>"; };
 		EC79213D17C8881B0032D2A4 /* sun_fire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sun_fire.plist; sourceTree = "<group>"; };
 		EC79213F17C889BE0032D2A4 /* power_suck.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = power_suck.plist; sourceTree = "<group>"; };
+		ECD0B0EC17C8ACA300897C7B /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		ECD0B0F017C8ACAF00897C7B /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		ECD0B0F217C8ACC100897C7B /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,9 +602,11 @@
 		EC791F8417C841560032D2A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0B0EC17C8ACA300897C7B /* Icon-72.png */,
+				ECD0B0F017C8ACAF00897C7B /* Icon-72@2x.png */,
 				EC79213917C8728C0032D2A4 /* start_button.png */,
+				ECD0B0F217C8ACC100897C7B /* Default-Landscape@2x~ipad.png */,
 				EC79213417C86ED90032D2A4 /* Default-Landscape~ipad.png */,
-				EC79212E17C86C850032D2A4 /* Default-Landscape~ipad@2x.png */,
 				76E228DD17C85CF100CDC0E2 /* Backgrounds */,
 				76E228E317C85CF100CDC0E2 /* Fonts */,
 				76E228E617C85CF100CDC0E2 /* Particles */,
@@ -1046,12 +1052,14 @@
 				76E2290517C85CF100CDC0E2 /* SpaceGame.caf in Resources */,
 				76E2290617C85CF100CDC0E2 /* Sprites.plist in Resources */,
 				76E2290717C85CF100CDC0E2 /* Sprites.pvr.ccz in Resources */,
-				EC79212F17C86C850032D2A4 /* Default-Landscape~ipad@2x.png in Resources */,
 				EC79213517C86ED90032D2A4 /* Default-Landscape~ipad.png in Resources */,
 				EC79213A17C8728C0032D2A4 /* start_button.png in Resources */,
 				EC79213C17C883230032D2A4 /* supasupa.plist in Resources */,
 				EC79213E17C8881B0032D2A4 /* sun_fire.plist in Resources */,
 				EC79214017C889BE0032D2A4 /* power_suck.plist in Resources */,
+				ECD0B0EE17C8ACA300897C7B /* Icon-72.png in Resources */,
+				ECD0B0F117C8ACAF00897C7B /* Icon-72@2x.png in Resources */,
+				ECD0B0F317C8ACC100897C7B /* Default-Landscape@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
