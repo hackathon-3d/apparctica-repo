@@ -173,9 +173,9 @@
             if (a_circle.isVisible == false) {
                 [self addPoint];
                 
-                a_circle.is_fading = true;
-                [sunFire removeFromParentAndCleanup:YES];
-                 
+                // TODO add a particle for smoke out!
+                
+                 [self removeChild:a_circle];
                 [_circles removeObject:a_circle];
             }
             
@@ -185,9 +185,6 @@
                 [lifeLabel setString:[NSString stringWithFormat:@"Lives: %d", 3 - numLocked]];
             }
             
-            if (a_circle.is_fading == true && a_circle._size_of_circle < 1) {
-                [self removeChild:a_circle];
-            }
         }
         
         if (numLocked == 3) {

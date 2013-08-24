@@ -17,7 +17,7 @@
     float _rate_of_growth;
     bool _is_visible;
     bool _is_locked;
-    CCParticleSystemQuad *sunFire;
+    
 }
 
 -(bool) isVisible;
@@ -33,6 +33,10 @@
 @property bool is_fading;
 @property NSDate *circleSpawnDate;
 @property int lastTimeScheduledBefore;
+@property CCParticleSystemQuad *sunFire;
+@property float opacity;
+@property int fadeOutRate;
+@property int currentOpacity;
 
 @property float nextXLocation;
 @property float nextYLocation;

@@ -15,7 +15,7 @@
 @synthesize _size_of_circle;
 @synthesize _correct_band;
 @synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location, lastTimeScheduledBefore, circleSpawnDate;
-@synthesize nextXLocation, nextYLocation, is_fading;
+@synthesize nextXLocation, nextYLocation, is_fading, sunFire, opacity, fadeOutRate, currentOpacity;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -53,6 +53,10 @@
         sunFire = [CCParticleSystemQuad particleWithFile:@"power_suck.plist"];
         sunFire.position = ccp(self->_x_location, self->_y_location);
         sunFire.endRadius = 0;
+        
+        fadeOutRate = 25;
+        currentOpacity = 255;
+        
         // sunFire.posVar = ccp(supasupa.posVar.x, winSize.height);
         //    supasupa.startSize *= 0.5;
         //    supasupa.endSize *= 1;
@@ -104,10 +108,6 @@
         self->_size_of_circle = self->_size_of_circle + self->_rate_of_growth;
         sunFire.position = ccp(self->_x_location, self->_y_location);
         sunFire.endRadius = self->_size_of_circle;
-    }
-    
-    if (is_fading == true) {
-        self->_size_of_circle = self->_size_of_circle - self->_rate_of_growth;
     }
     
 }
