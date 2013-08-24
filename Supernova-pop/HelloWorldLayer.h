@@ -30,6 +30,10 @@
 - (void)endScene;
 @property int numLocked;
 @property NSMutableArray *_total_circles_ever;
+@property CCSprite *lifeOne;
+@property CCSprite *lifeTwo;
+@property CCSprite *lifeThree;
+
 
 - (void)addPoint;
 -(void)doSomething: (CCMenuItem  *) menuItem;

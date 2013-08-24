@@ -22,6 +22,7 @@
 
 @synthesize numLocked;
 @synthesize rateOfCircles, _total_circles_ever;
+@synthesize lifeOne, lifeThree, lifeTwo;
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -58,7 +59,13 @@
         scoreLabel.position = ccp(winSize.width-120, winSize.height-30); //Middle of the screen...
         [scoreLabel setFontSize:64.0];
         [self addChild:scoreLabel z:1];
-        _next_count_to_add_circles = 5;
+        
+//        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
+//        lifeLabel.position = ccp(winSize.width-120, winSize.height-60); //Middle of the screen...
+//        [lifeLabel setFontSize:64.0];
+//        [self addChild:lifeLabel z:1];
+        
+        _next_count_to_add_circles = 3;
         numLocked = 0;
         rateOfCircles = 3;
 
@@ -88,6 +95,10 @@
         //[self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:1000];
         
+        
+//        lifeOne = [CCSprite spriteWithFile:@"stick_figure.gif"];
+//        lifeOne.position = ccp(winSize.width-120, winSize.height-90);
+//        [self addChild:lifeOne];
         
        
 

@@ -41,18 +41,10 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 25 + [self randomFloatBetween:50 and:225];
+        self->_correct_band = 25 + [self randomFloatBetween:50 and:200];
         self->_is_visible = true;
         self->_is_locked = false;
-        self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
-        
-        if (ceil([self randomFloatBetween:0 and:2]) == 1) {
-            //nextXLocation = [self randomFloatBetween:<#(float)#> and:<#(float)#>]
-        }
-        else {
-            
-        }
-        
+        self->_rate_of_growth = [self randomFloatBetween:1.8 and:3];
         
         circleSpawnDate = [NSDate date];
         lastTimeScheduledBefore = 0;//new var
