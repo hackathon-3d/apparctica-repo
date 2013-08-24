@@ -15,6 +15,7 @@
 @synthesize _size_of_circle;
 @synthesize _correct_band;
 @synthesize _is_locked,_is_visible,_rate_growth,_x_location,_y_location, lastTimeScheduledBefore, circleSpawnDate;
+@synthesize nextXLocation, nextYLocation;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -40,10 +41,10 @@
         self->_size_of_circle = 1;
         self->_x_location = arc4random_uniform(size.width - 20);
         self->_y_location = arc4random_uniform(size.height - 20);
-        self->_correct_band = 25 + [self randomFloatBetween:50 and:225];
+        self->_correct_band = 25 + [self randomFloatBetween:50 and:200];
         self->_is_visible = true;
         self->_is_locked = false;
-        self->_rate_of_growth = [self randomFloatBetween:0.8 and:2];
+        self->_rate_of_growth = [self randomFloatBetween:1.8 and:3];
         
         circleSpawnDate = [NSDate date];
         lastTimeScheduledBefore = 0;//new var

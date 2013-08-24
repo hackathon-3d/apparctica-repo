@@ -33,6 +33,9 @@
 @property NSDate *circleSpawnDate;
 @property int lastTimeScheduledBefore;
 
+@property float nextXLocation;
+@property float nextYLocation;
+
 +(CCScene *) scene;
 
 @end

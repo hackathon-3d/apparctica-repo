@@ -22,6 +22,7 @@
 
 @synthesize numLocked;
 @synthesize rateOfCircles, _total_circles_ever;
+@synthesize lifeOne, lifeThree, lifeTwo;
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
@@ -58,7 +59,13 @@
         scoreLabel.position = ccp(winSize.width-120, winSize.height-30); //Middle of the screen...
         [scoreLabel setFontSize:64.0];
         [self addChild:scoreLabel z:1];
-        _next_count_to_add_circles = 5;
+        
+//        lifeLabel = [CCLabelTTF labelWithString:@"Lives: 3" fontName:@"Marker Felt" fontSize:34];
+//        lifeLabel.position = ccp(winSize.width-120, winSize.height-60); //Middle of the screen...
+//        [lifeLabel setFontSize:64.0];
+//        [self addChild:lifeLabel z:1];
+        
+        _next_count_to_add_circles = 3;
         numLocked = 0;
         rateOfCircles = 3;
 
@@ -98,6 +105,10 @@
         [self addChild:PauseButton z:1000];
         
         
+//        lifeOne = [CCSprite spriteWithFile:@"stick_figure.gif"];
+//        lifeOne.position = ccp(winSize.width-120, winSize.height-90);
+//        [self addChild:lifeOne];
+        
        
 
         [self schedule:@selector(addCircles:) interval:rateOfCircles];
@@ -118,32 +129,10 @@
 
 -(void) addCircles: (ccTime) delta
 {
-    NSLog([[NSString alloc] initWithFormat:@"delta: %f", (float)delta ]);
+    //NSLog([[NSString alloc] initWithFormat:@"delta: %f", (float)delta ]);
     CircleClass *new_class = [CircleClass node];
     CCLayer *layer = new_class;
-    CGSize size = [[CCDirector sharedDirector] winSize];
     
-    while (true) {
-        bool breakOut = true;
-        for (CircleClass *circle in _total_circles_ever) {
-            float distance = pow(circle._x_location - new_class._x_location, 2) + pow(circle._y_location - new_class._y_location, 2);
-            
-            distance = sqrt(distance);
-            
-            if (distance <= [circle _correct_band]) {
-                // in a circle
-                breakOut = false;
-                
-                new_class._x_location = arc4random_uniform(size.width - 20);
-                new_class._y_location = arc4random_uniform(size.height - 20);
-            }
-        }
-        
-        if (breakOut == true) {
-            break;
-        }
-    }
-        
     [self addChild:layer];
     [_circles addObject:layer];
     [_total_circles_ever addObject:layer];
